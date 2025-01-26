@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -61,7 +62,13 @@ public class RideConsole {
 			
 			System.out.print("Enter the ride id: ");
 			
-			rideId = scan.nextLine().toUpperCase().trim();
+			rideId = scan.nextLine().trim();
+			
+			if(rideId.equals("STOP")) {
+				System.out.print("Thanks for using NovaQueue");
+				break;
+			}
+			rideId = rideId.toUpperCase();
 			
 			System.out.println("Ride ID: " + rideId);
 			
@@ -69,8 +76,16 @@ public class RideConsole {
 			
 			System.out.print("Enter number of people currently in line: ");
 			
-			numPeople = scan.nextInt();
-			
+			try {
+				numPeople = scan.nextInt();
+			}
+			catch(InputMismatchException e) {
+				if(scan.nextLine().trim().equals("STOP")) {
+					System.out.println("Thanks for using NovaQueue");
+					break;
+				}
+			}
+
 			System.out.println("Number of People " + numPeople);
 			
 			notStop = false;
