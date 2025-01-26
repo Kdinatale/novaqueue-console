@@ -72,9 +72,6 @@ public class RideConsole {
 				break;
 			}
 			
-			// Convert to upper case to ignore the input case
-			rideId = rideId.toUpperCase();
-			
 			// For testing purposes 
 			// System.out.println("Ride ID: " + rideId);
 			
