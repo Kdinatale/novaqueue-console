@@ -44,11 +44,7 @@ public class RideConsole {
 		
 		rideDB.put(ride6.getRideId(), ride6);
 		
-//		for(String rideId: rideDB.keySet()) {
-//			System.out.println(rideId);
-//			
-//			System.out.println(rideDB.get(rideId));
-//		}
+		System.out.println("Welcome to NovaQueue");
 		
 		boolean notStop = true;
 		
@@ -56,39 +52,61 @@ public class RideConsole {
 		
 		String rideId = "";
 		
-		int numPeople = 0;
+		int numPeople = -1;
 		
 		while(notStop) {
 			
-			System.out.print("Enter the ride id: ");
+			// Prompt user for the ride id
+			System.out.println("Enter the ride id: ");
 			
+			// Trim white space from input 
 			rideId = scan.nextLine().trim();
 			
+			// Check if user inputs STOP
 			if(rideId.equals("STOP")) {
+				
+				// Print Stop Statement
 				System.out.print("Thanks for using NovaQueue");
+				
+				// Break out of loop
 				break;
 			}
+			
+			// Convert to upper case to ignore the input case
 			rideId = rideId.toUpperCase();
 			
-			System.out.println("Ride ID: " + rideId);
+			// For testing purposes 
+			// System.out.println("Ride ID: " + rideId);
 			
-			System.out.println();
+			// Prompt user for the number of people in line
+			System.out.println("Enter number of people currently in line: ");
 			
-			System.out.print("Enter number of people currently in line: ");
 			
 			try {
+				// Scan user input
 				numPeople = scan.nextInt();
 			}
+			// Catch exception if user inputs an incorrect data type
 			catch(InputMismatchException e) {
+				// Check if the value input was STOP
 				if(scan.nextLine().trim().equals("STOP")) {
 					System.out.println("Thanks for using NovaQueue");
 					break;
 				}
+				else {
+					// Prompt user for new input of correct type
+				}
+				
 			}
 
-			System.out.println("Number of People " + numPeople);
+
+			// Check if within range of a valid input for the number of people in line 
+
+
+//			System.out.println("Number of People " + numPeople);
 			
-			notStop = false;
+			System.out.println();
+			
 		}
 		
 	}
