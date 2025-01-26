@@ -25,7 +25,8 @@ public class RideConsole {
 
 		Ride ride6 = new Ride("MC", "Mini Cat", Ride.RideType.KIDDIE, 45, 20);
 		
-
+		// Create Map
+		Map<String, Ride> rideDB = new HashMap<String, Ride>();
 	}
 
 }
