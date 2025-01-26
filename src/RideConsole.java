@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
 * This class ....
@@ -50,8 +51,29 @@ public class RideConsole {
 		
 		boolean notStop = true;
 		
+		Scanner scan = new Scanner(System.in);
+		
+		String rideId = "";
+		
+		int numPeople = 0;
+		
 		while(notStop) {
 			
+			System.out.print("Enter the ride id: ");
+			
+			rideId = scan.nextLine().toUpperCase().trim();
+			
+			System.out.println("Ride ID: " + rideId);
+			
+			System.out.println();
+			
+			System.out.print("Enter number of people currently in line: ");
+			
+			numPeople = scan.nextInt();
+			
+			System.out.println("Number of People " + numPeople);
+			
+			notStop = false;
 		}
 		
 	}
