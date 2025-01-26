@@ -27,6 +27,21 @@ public class RideConsole {
 		
 		// Create Map
 		Map<String, Ride> rideDB = new HashMap<String, Ride>();
+		
+		// Add key value entries of ID and Ride object
+		
+		rideDB.put(ride1.getRideId(), ride1);
+		
+		rideDB.put(ride2.getRideId(), ride2);
+		
+		rideDB.put(ride3.getRideId(), ride3);
+		
+		rideDB.put(ride4.getRideId(), ride4);
+		
+		rideDB.put(ride5.getRideId(), ride5);
+		
+		rideDB.put(ride6.getRideId(), ride6);
+		
 	}
 
 }
