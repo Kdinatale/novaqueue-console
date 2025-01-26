@@ -42,6 +42,12 @@ public class RideConsole {
 		
 		rideDB.put(ride6.getRideId(), ride6);
 		
+		for(String rideId: rideDB.keySet()) {
+			System.out.println(rideId);
+			
+			System.out.println(rideDB.get(rideId));
+		}
+		
 	}
 
 }
