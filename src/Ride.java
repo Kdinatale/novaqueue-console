@@ -1,3 +1,9 @@
+/**
+* This class ....
+*
+* @author Kayleigh DiNatale
+* @version 1.0
+*/
 
 public class Ride {
 	
@@ -34,4 +40,21 @@ public class Ride {
 		this.ridersPerDispatch = ridersPerDispatch;
 		
 	}
+	
+	public String getRideName() {
+		return rideName;
+	}
+	
+	public RideType getRideType() {
+		return rideType;
+	}
+	
+	public int getDispatchTime() {
+		return dispatchTime;
+	}
+	
+	public int getRidersPerDispatch() {
+		return ridersPerDispatch;
+	}
+	
 }
