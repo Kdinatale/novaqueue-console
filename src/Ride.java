@@ -61,4 +61,8 @@ public class Ride {
 		return ridersPerDispatch;
 	}
 	
+	public String toString() {
+		return "The " + rideName + " is a " + rideType + " ride with a dispatch time of " + dispatchTime + " seconds and with " + ridersPerDispatch + " riders per dispatch.";
+	}
+	
 }
