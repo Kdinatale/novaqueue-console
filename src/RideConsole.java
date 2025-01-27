@@ -54,46 +54,79 @@ public class RideConsole {
 		
 		int numPeople = -1;
 		
+		boolean notValidRideId = true;
+		
+		boolean notValidNumPeople = true;
+
+		
 		while(notStop) {
 			
 			// Prompt user for the ride id
-			System.out.println("Enter the ride id: ");
 			
-			// Trim white space from input 
-			rideId = scan.nextLine().trim();
-			
-			// Check if user inputs STOP
-			if(rideId.equals("STOP")) {
+			while(notValidRideId) {
+				System.out.println("Enter the ride id: ");
 				
-				// Print Stop Statement
-				System.out.print("Thanks for using NovaQueue");
+				// Trim white space from input 
+				rideId = scan.nextLine().trim();
 				
-				// Break out of loop
-				break;
+				// Check if user inputs STOP
+				if(rideId.equals("STOP")) {
+					
+					// Print Stop Statement
+					System.out.print("Thanks for using NovaQueue");
+					
+					notStop = false;
+					// Break out of loop
+					break;
+				}
+				
+				// Get Ride object from key
+				Ride ride = rideDB.get(rideId);
+				if(ride != null) {
+					notValidRideId = false;
+				}
+				else {
+					System.out.println("No ride exists for ride id " + rideId);
+				}
 			}
 			
 			// For testing purposes 
 			// System.out.println("Ride ID: " + rideId);
 			
 			// Prompt user for the number of people in line
-			System.out.println("Enter number of people currently in line: ");
 			
-			
-			try {
-				// Scan user input
-				numPeople = scan.nextInt();
-			}
-			// Catch exception if user inputs an incorrect data type
-			catch(InputMismatchException e) {
-				// Check if the value input was STOP
-				if(scan.nextLine().trim().equals("STOP")) {
-					System.out.println("Thanks for using NovaQueue");
-					break;
+			while(notValidNumPeople && notStop) {
+				try {
+					System.out.println("Enter number of people currently in line: ");
+					
+					// Scan user input
+					numPeople = scan.nextInt();
+					
+					if(numPeople >= 0 && numPeople <= 5000) {
+						notValidNumPeople = false;
+					}
+					else {
+						System.out.println("Invalid count for people currently in line");
+					}
 				}
-				else {
-					// Prompt user for new input of correct type
+				// Catch exception if user inputs an incorrect data type
+				catch(InputMismatchException e) {
+					
+					// Check if the value input was STOP
+					if(scan.nextLine().trim().equals("STOP")) {
+						
+						System.out.println("Thanks for using NovaQueue");
+						notStop = false;
+						break;
+					}
+					else {
+						// Prompt user for new input of correct type
+						System.out.println("Invalid count for people in line.");
+						
+					}
+					
 				}
-				
+								
 			}
 
 
@@ -104,6 +137,8 @@ public class RideConsole {
 			
 			System.out.println();
 			
+			notValidRideId = true;
+			notValidNumPeople = true;
 		}
 		
 	}
