@@ -4,7 +4,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
-* This class ....
+* This class prompts a user for ride id and the number of people in line 
+* and returns information about the ride's wait time.
 *
 * @author Kayleigh DiNatale
 * @version 1.0
@@ -52,12 +53,14 @@ public class RideConsole {
 		
 		String rideId = "";
 		
-		int numPeople = -1;
+		int numPeopleInLine = -1;
 		
 		boolean notValidRideId = true;
 		
 		boolean notValidNumPeople = true;
-
+		
+		double waitTime;
+		Ride ride = null;
 		
 		while(notStop) {
 			
@@ -81,7 +84,7 @@ public class RideConsole {
 				}
 				
 				// Get Ride object from key
-				Ride ride = rideDB.get(rideId);
+				ride = rideDB.get(rideId);
 				if(ride != null) {
 					notValidRideId = false;
 				}
@@ -90,19 +93,17 @@ public class RideConsole {
 				}
 			}
 			
-			// For testing purposes 
-			// System.out.println("Ride ID: " + rideId);
-			
-			// Prompt user for the number of people in line
 			
 			while(notValidNumPeople && notStop) {
 				try {
+					
+					// Prompt user for the number of people in line
 					System.out.println("Enter number of people currently in line: ");
 					
 					// Scan user input
-					numPeople = scan.nextInt();
+					numPeopleInLine = scan.nextInt();
 					
-					if(numPeople >= 0 && numPeople <= 5000) {
+					if(numPeopleInLine >= 0 && numPeopleInLine <= 5000) {
 						notValidNumPeople = false;
 					}
 					else {
@@ -126,14 +127,20 @@ public class RideConsole {
 					}
 					
 				}
+				scan.nextLine();
 								
 			}
 
+			// Wait time = (Dispatch Time / Riders per dispatch) * Line Size
+			waitTime = (((double)ride.getDispatchTime() / ride.getRidersPerDispatch()) * numPeopleInLine)/60;
 
-			// Check if within range of a valid input for the number of people in line 
-
-
-//			System.out.println("Number of People " + numPeople);
+			System.out.print(ride.getRideName() + " has " + numPeopleInLine + " people in line and the wait time is ");
+			
+			System.out.format("%.1f ", waitTime);
+			
+			System.out.println(" minutes - ");
+			
+			//Add status
 			
 			System.out.println();
 			
